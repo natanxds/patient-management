@@ -1,5 +1,6 @@
 package com.natanxds.patientservice.dto;
 
+import com.natanxds.patientservice.dto.validators.CreatePatientValidationGroup;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -13,7 +14,7 @@ public class PatientRequestDTO {
     private String name;
 
     @NotBlank(message = "Email is mandatory")
-    @Email(message = "Email should be valid")
+    @Email(message = "Email should be va             lid")
     private String email;
 
     @NotBlank(message = "Address is mandatory")
@@ -22,6 +23,7 @@ public class PatientRequestDTO {
     @NotBlank(message = "Date of birth is mandatory")
     private String dateOfBirth;
 
-    @NotBlank(message = "Registered date is mandatory")
+    @NotBlank(groups = CreatePatientValidationGroup.class,
+            message = "Registered date is mandatory")
     private String registeredDate;
 }
